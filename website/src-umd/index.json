@@ -344,6 +344,28 @@
     {
         "root": "packages/chart",
         "folder": "",
+        "path": "packages/chart/docs/RadialBar.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "RadialBar"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "API"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Published Properties"
+            }
+        ]
+    },
+    {
+        "root": "packages/chart",
+        "folder": "",
         "path": "packages/chart/docs/Scatter.md",
         "headings": [
             {
@@ -410,6 +432,28 @@
     {
         "root": "packages/chart",
         "folder": "",
+        "path": "packages/chart/docs/SummaryC.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "SummaryC"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "API"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Published Properties"
+            }
+        ]
+    },
+    {
+        "root": "packages/chart",
+        "folder": "",
         "path": "packages/chart/docs/WordCloud.md",
         "headings": [
             {
@@ -448,6 +492,85 @@
                 "type": "heading",
                 "depth": 2,
                 "text": "Published Properties"
+            }
+        ]
+    },
+    {
+        "root": "packages/common",
+        "folder": "",
+        "path": "packages/common/docs/index.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "@hpcc-js/common"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Controls"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Utilities"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Developer Zone"
+            }
+        ]
+    },
+    {
+        "root": "packages/common",
+        "folder": "",
+        "path": "packages/common/docs/Palette.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "Palette"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Ordinal"
+            },
+            {
+                "type": "heading",
+                "depth": 3,
+                "text": "Palette.ordinal"
+            },
+            {
+                "type": "heading",
+                "depth": 3,
+                "text": "Creating a custom palette"
+            },
+            {
+                "type": "heading",
+                "depth": 3,
+                "text": "Using a custom palette"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Rainbow"
+            },
+            {
+                "type": "heading",
+                "depth": 3,
+                "text": "Palette.rainbow"
+            },
+            {
+                "type": "heading",
+                "depth": 3,
+                "text": "Creating a custom palette"
+            },
+            {
+                "type": "heading",
+                "depth": 3,
+                "text": "Using a custom palette"
             }
         ]
     },
@@ -805,81 +928,24 @@
         ]
     },
     {
-        "root": "packages/common",
+        "root": "packages/dgrid",
         "folder": "",
-        "path": "packages/common/docs/index.md",
+        "path": "packages/dgrid/docs/Table.md",
         "headings": [
             {
                 "type": "heading",
                 "depth": 1,
-                "text": "@hpcc-js/common"
+                "text": "Table"
             },
             {
                 "type": "heading",
                 "depth": 2,
-                "text": "Controls"
+                "text": "API"
             },
             {
                 "type": "heading",
                 "depth": 2,
-                "text": "Utilities"
-            },
-            {
-                "type": "heading",
-                "depth": 2,
-                "text": "Developer Zone"
-            }
-        ]
-    },
-    {
-        "root": "packages/common",
-        "folder": "",
-        "path": "packages/common/docs/Palette.md",
-        "headings": [
-            {
-                "type": "heading",
-                "depth": 1,
-                "text": "Palette"
-            },
-            {
-                "type": "heading",
-                "depth": 2,
-                "text": "Ordinal"
-            },
-            {
-                "type": "heading",
-                "depth": 3,
-                "text": "Palette.ordinal"
-            },
-            {
-                "type": "heading",
-                "depth": 3,
-                "text": "Creating a custom palette"
-            },
-            {
-                "type": "heading",
-                "depth": 3,
-                "text": "Using a custom palette"
-            },
-            {
-                "type": "heading",
-                "depth": 2,
-                "text": "Rainbow"
-            },
-            {
-                "type": "heading",
-                "depth": 3,
-                "text": "Palette.rainbow"
-            },
-            {
-                "type": "heading",
-                "depth": 3,
-                "text": "Creating a custom palette"
-            },
-            {
-                "type": "heading",
-                "depth": 3,
-                "text": "Using a custom palette"
+                "text": "Published Properties"
             }
         ]
     },
@@ -946,6 +1012,181 @@
                 "type": "heading",
                 "depth": 3,
                 "text": "Published Properties"
+            }
+        ]
+    },
+    {
+        "root": "packages/graph",
+        "folder": "",
+        "path": "packages/graph/docs/DataGraph.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "DataGraph"
+            }
+        ]
+    },
+    {
+        "root": "packages/graph",
+        "folder": "",
+        "path": "packages/graph/docs/Graph2.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "Graph2 (beta)"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "With Categories"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "With Annotations"
+            }
+        ]
+    },
+    {
+        "root": "packages/graph",
+        "folder": "",
+        "path": "packages/graph/docs/index.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "@hpcc-js/chart"
+            }
+        ]
+    },
+    {
+        "root": "packages/react",
+        "folder": "",
+        "path": "packages/react/docs/faChar.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "faChar.tsx"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "fa-question"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "fa-user"
+            }
+        ]
+    },
+    {
+        "root": "packages/react",
+        "folder": "",
+        "path": "packages/react/docs/icon.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "icon.tsx"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Icon"
+            }
+        ]
+    },
+    {
+        "root": "packages/react",
+        "folder": "",
+        "path": "packages/react/docs/index.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "@hpcc-js/chart"
+            }
+        ]
+    },
+    {
+        "root": "packages/react",
+        "folder": "",
+        "path": "packages/react/docs/render.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "render.tsx"
+            }
+        ]
+    },
+    {
+        "root": "packages/react",
+        "folder": "",
+        "path": "packages/react/docs/shape.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "shape.tsx"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Circle"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Square"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Rectangle"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Shape"
+            }
+        ]
+    },
+    {
+        "root": "packages/react",
+        "folder": "",
+        "path": "packages/react/docs/text.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "text.tsx"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "Text"
+            },
+            {
+                "type": "heading",
+                "depth": 2,
+                "text": "TextBox"
+            }
+        ]
+    },
+    {
+        "root": "packages/react",
+        "folder": "",
+        "path": "packages/react/docs/vertex.md",
+        "headings": [
+            {
+                "type": "heading",
+                "depth": 1,
+                "text": "vertex.tsx"
             }
         ]
     }

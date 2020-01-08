@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 16234,
+    "id": 16289,
     "name": "CSSEditor",
     "kind": 128,
     "kindString": "Class",
@@ -20,7 +20,7 @@
         {
             "type": "reference",
             "name": "Editor",
-            "id": 15805
+            "id": 15847
         }
     ],
     "folder": "packages/codemirror"

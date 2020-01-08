@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 3919,
+    "id": 3979,
     "name": "Bar",
     "kind": 128,
     "kindString": "Class",
@@ -20,14 +20,14 @@
         {
             "type": "reference",
             "name": "Column",
-            "id": 3083
+            "id": 3123
         }
     ],
     "extendedBy": [
         {
             "type": "reference",
             "name": "Gantt",
-            "id": 7091
+            "id": 7171
         }
     ],
     "folder": "packages/chart"

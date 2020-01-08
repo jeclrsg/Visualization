@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 2361,
+    "id": 2401,
     "name": "Area",
     "kind": 128,
     "kindString": "Class",
@@ -20,7 +20,7 @@
         {
             "type": "reference",
             "name": "Scatter",
-            "id": 1462
+            "id": 1482
         }
     ],
     "folder": "packages/chart"
@@ -152,7 +152,7 @@ new Area()
 
 <!--meta:Area.target
 {
-    "id": 2658,
+    "id": 2698,
     "name": "target",
     "kind": 2048,
     "kindString": "Method",
@@ -161,7 +161,7 @@ new Area()
     },
     "signatures": [
         {
-            "id": 2659,
+            "id": 2699,
             "name": "target",
             "kind": 4096,
             "kindString": "Call signature",
@@ -193,14 +193,14 @@ new Area()
             }
         },
         {
-            "id": 2660,
+            "id": 2700,
             "name": "target",
             "kind": 4096,
             "kindString": "Call signature",
             "flags": {},
             "parameters": [
                 {
-                    "id": 2661,
+                    "id": 2701,
                     "name": "_",
                     "kind": 32768,
                     "kindString": "Parameter",

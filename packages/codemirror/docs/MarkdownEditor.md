@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 18824,
+    "id": 18957,
     "name": "MarkdownEditor",
     "kind": 128,
     "kindString": "Class",
@@ -20,7 +20,7 @@
         {
             "type": "reference",
             "name": "Editor",
-            "id": 15805
+            "id": 15847
         }
     ],
     "folder": "packages/codemirror"

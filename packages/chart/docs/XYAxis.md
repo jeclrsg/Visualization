@@ -12,12 +12,12 @@
     "sources": [
         {
             "fileName": "XYAxis.ts",
-            "line": 10,
+            "line": 9,
             "character": 19
         },
         {
             "fileName": "XYAxis.ts",
-            "line": 649,
+            "line": 648,
             "character": 23
         }
     ],
@@ -31,22 +31,22 @@
         {
             "type": "reference",
             "name": "Scatter",
-            "id": 1462
+            "id": 1482
         },
         {
             "type": "reference",
             "name": "Column",
-            "id": 3083
+            "id": 3123
         },
         {
             "type": "reference",
             "name": "Contour",
-            "id": 6232
+            "id": 6292
         },
         {
             "type": "reference",
             "name": "HexBin",
-            "id": 9464
+            "id": 9544
         }
     ],
     "folder": "packages/chart"

@@ -89,23 +89,26 @@ var __extends = (this && this.__extends) || (function () {
         ClassMeta.prototype.update = function (domNode, element) {
             var _this = this;
             _super.prototype.update.call(this, domNode, element);
-            var json = JSON.parse(this.text());
-            var md = [];
-            if (json.signatures) {
-                json.signatures.forEach(function (sig) {
-                    md.push("**" + json.name + "**(" + _this.params(sig.parameters).join(", ") + "): " + _this.type(sig.type));
-                    md.push("");
-                });
-            }
-            if (json.folder && json.sources && json.sources.length) {
-                var source = json.sources[0];
-                if (source.fileName.indexOf(".d.ts") < 0) {
-                    md.push("Defined in [" + source.fileName + ":" + source.line + "](https://github.com/hpcc-systems/Visualization/blob/master/" + json.folder + "/src/" + source.fileName + "#L" + source.line + ")");
+            try {
+                var json_1 = JSON.parse(this.text());
+                var md_1 = [];
+                if (json_1.signatures) {
+                    json_1.signatures.forEach(function (sig) {
+                        md_1.push("**" + json_1.name + "**(" + _this.params(sig.parameters).join(", ") + "): " + _this.type(sig.type));
+                        md_1.push("");
+                    });
                 }
+                if (json_1.folder && json_1.sources && json_1.sources.length) {
+                    var source = json_1.sources[0];
+                    if (source.fileName.indexOf(".d.ts") < 0) {
+                        md_1.push("Defined in [" + source.fileName + ":" + source.line + "](https://github.com/hpcc-systems/Visualization/blob/master/" + json_1.folder + "/src/" + source.fileName + "#L" + source.line + ")");
+                    }
+                }
+                element.html(marked(md_1.join("\r\n"), {
+                    renderer: _renderer
+                }));
             }
-            element.html(marked(md.join("\r\n"), {
-                renderer: _renderer
-            }));
+            catch (e) { }
         };
         return ClassMeta;
     }(common_1.HTMLWidget));

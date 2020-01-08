@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 10281,
+    "id": 10381,
     "name": "Line",
     "kind": 128,
     "kindString": "Class",
@@ -20,7 +20,7 @@
         {
             "type": "reference",
             "name": "Scatter",
-            "id": 1462
+            "id": 1482
         }
     ],
     "folder": "packages/chart"

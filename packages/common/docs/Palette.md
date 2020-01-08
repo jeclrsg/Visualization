@@ -87,7 +87,7 @@ const os = new OrdinalSample()
 
 <!--meta:Palette.ordinal
 {
-    "id": 23840,
+    "id": 24804,
     "name": "ordinal",
     "kind": 32,
     "kindString": "Variable",
@@ -105,13 +105,13 @@ const os = new OrdinalSample()
     "type": {
         "type": "reference",
         "name": "fetchOrdinalItem",
-        "id": 23809
+        "id": 24773
     },
     "defaultValue": " fetchOrdinalItem",
     "folder": "packages/common",
     "signatures": [
         {
-            "id": 23810,
+            "id": 24774,
             "name": "fetchOrdinalItem",
             "kind": 4096,
             "kindString": "Call signature",
@@ -125,14 +125,14 @@ const os = new OrdinalSample()
             }
         },
         {
-            "id": 23811,
+            "id": 24775,
             "name": "fetchOrdinalItem",
             "kind": 4096,
             "kindString": "Call signature",
             "flags": {},
             "parameters": [
                 {
-                    "id": 23812,
+                    "id": 24776,
                     "name": "id",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -143,7 +143,7 @@ const os = new OrdinalSample()
                     }
                 },
                 {
-                    "id": 23813,
+                    "id": 24777,
                     "name": "colors",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -162,7 +162,7 @@ const os = new OrdinalSample()
             "type": {
                 "type": "reference",
                 "name": "OrdinalPaletteFunc",
-                "id": 23757
+                "id": 24721
             }
         }
     ]
@@ -227,7 +227,7 @@ const os = new RainbowSample()
 
 <!--meta:Palette.rainbow
 {
-    "id": 23841,
+    "id": 24805,
     "name": "rainbow",
     "kind": 32,
     "kindString": "Variable",
@@ -245,13 +245,13 @@ const os = new RainbowSample()
     "type": {
         "type": "reference",
         "name": "fetchRainbowItem",
-        "id": 23820
+        "id": 24784
     },
     "defaultValue": " fetchRainbowItem",
     "folder": "packages/common",
     "signatures": [
         {
-            "id": 23821,
+            "id": 24785,
             "name": "fetchRainbowItem",
             "kind": 4096,
             "kindString": "Call signature",
@@ -265,14 +265,14 @@ const os = new RainbowSample()
             }
         },
         {
-            "id": 23822,
+            "id": 24786,
             "name": "fetchRainbowItem",
             "kind": 4096,
             "kindString": "Call signature",
             "flags": {},
             "parameters": [
                 {
-                    "id": 23823,
+                    "id": 24787,
                     "name": "id",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -286,18 +286,18 @@ const os = new RainbowSample()
             "type": {
                 "type": "reference",
                 "name": "RainbowPaletteFunc",
-                "id": 23766
+                "id": 24730
             }
         },
         {
-            "id": 23824,
+            "id": 24788,
             "name": "fetchRainbowItem",
             "kind": 4096,
             "kindString": "Call signature",
             "flags": {},
             "parameters": [
                 {
-                    "id": 23825,
+                    "id": 24789,
                     "name": "id",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -308,7 +308,7 @@ const os = new RainbowSample()
                     }
                 },
                 {
-                    "id": 23826,
+                    "id": 24790,
                     "name": "colors",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -322,7 +322,7 @@ const os = new RainbowSample()
                     }
                 },
                 {
-                    "id": 23827,
+                    "id": 24791,
                     "name": "steps",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -338,7 +338,7 @@ const os = new RainbowSample()
             "type": {
                 "type": "reference",
                 "name": "RainbowPaletteFunc",
-                "id": 23766
+                "id": 24730
             }
         }
     ]

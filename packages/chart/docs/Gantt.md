@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 7091,
+    "id": 7171,
     "name": "Gantt",
     "kind": 128,
     "kindString": "Class",
@@ -20,7 +20,7 @@
         {
             "type": "reference",
             "name": "Bar",
-            "id": 3919
+            "id": 3979
         }
     ],
     "folder": "packages/chart"

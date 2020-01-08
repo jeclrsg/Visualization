@@ -50,7 +50,7 @@ var __assign = (this && this.__assign) || function () {
             return this.data()[0][1];
         };
         Source.prototype.options = function () {
-            return __assign({}, _super.prototype.options.call(this), { mode: this._mode, foldGutter: true, gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"] });
+            return __assign(__assign({}, _super.prototype.options.call(this)), { mode: this._mode, foldGutter: true, gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"] });
         };
         Source.prototype.update = function (domNode, element) {
             this.height(Math.max((this.text2().split("\n").length + 1) * 12, this._minHeight));

@@ -141,6 +141,7 @@ a {
 }
 #leftnav{
   min-width: var(--leftnav-min-width);
+  overflow-y: scroll;
 }
 #rightnav{
   min-width: var(--rightnav-min-width);
@@ -248,10 +249,10 @@ td{
   border-collapse: collapse;
   vertical-align: top;
 }
-th:nth-child(3),
-td:nth-child(3){
+.website_Markdown > div > div > div > table > thead > tr > th:nth-child(3),
+.website_Markdown > div > div > div > table > tbody > tr > td:nth-child(3){
   text-align: center;
 }
-td:nth-child(4){
+.website_Markdown > div > div > div > table > tbody > tr > td:nth-child(4){
   white-space: nowrap;
 }

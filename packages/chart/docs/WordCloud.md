@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 15139,
+    "id": 15181,
     "name": "WordCloud",
     "kind": 128,
     "kindString": "Class",
@@ -12,7 +12,7 @@
     "sources": [
         {
             "fileName": "WordCloud.ts",
-            "line": 11,
+            "line": 9,
             "character": 22
         }
     ],

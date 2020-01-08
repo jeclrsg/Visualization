@@ -6,12 +6,13 @@
             "plugin-text": "https://cdn.jsdelivr.net/npm/systemjs-plugin-text@0.0.11/text.js",
             "plugin-babel": "https://cdn.jsdelivr.net/npm/systemjs-plugin-babel@0.0.25/plugin-babel.js",
             "systemjs-babel-build": "https://cdn.jsdelivr.net/npm/systemjs-plugin-babel@0.0.25/systemjs-babel-browser.js",
-            "marked": "https://cdn.jsdelivr.net/npm/marked",
-            "prismjs": "https://cdn.jsdelivr.net/npm/prismjs",
+            "marked": "https://cdn.jsdelivr.net/npm/marked@0.7.0",
+            "prismjs": "https://cdn.jsdelivr.net/npm/prismjs@1.17.1",
             "d3-array": "https://cdn.jsdelivr.net/npm/d3-array",
             "d3-dsv": "https://cdn.jsdelivr.net/npm/d3-dsv",
             "d3-fetch": "https://cdn.jsdelivr.net/npm/d3-fetch",
             "d3-random": "https://cdn.jsdelivr.net/npm/d3-random",
+            "d3-selection": "https://cdn.jsdelivr.net/npm/d3-selection",
             "@hpcc-js": "https://cdn.jsdelivr.net/npm/@hpcc-js"
         },
         "meta": {
@@ -32,7 +33,7 @@
         systemjsConfig.map["@hpcc-js"] = "https://cdn.jsdelivr.net/npm/@hpcc-js";
     } else {
         var packages = [
-            "comms", "util", "common", "layout", "phosphor", "api", "dgrid", "chart", "other", "form",
+            "util", "comms", "common", "layout", "phosphor", "api", "dgrid", "chart", "other", "form",
             "tree", "graph", "map", "map-deck",
             "react", "composite", "marshaller", "html", "timeline", "codemirror", "eclwatch"
         ];

@@ -4,17 +4,35 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "./hpccIndex.js", "./hpccScrollNav.js", "./markdown.js", "../src-umd/index.json"], factory);
+        define(["require", "exports", "@hpcc-js/common", "./hpccIndex.js", "./hpccScrollNav.js", "./markdown.js", "../src-umd/index.json"], factory);
     }
 })(function (require, exports) {
     "use strict";
     var __syncRequire = typeof module === "object" && typeof module.exports === "object";
     Object.defineProperty(exports, "__esModule", { value: true });
+    var common_1 = require("@hpcc-js/common");
     var hpccIndex_js_1 = require("./hpccIndex.js");
     var hpccScrollNav_js_1 = require("./hpccScrollNav.js");
     var markdown_js_1 = require("./markdown.js");
     // @ts-ignore
     var indexJson = require("../src-umd/index.json");
+    var params = common_1.Utility.urlParams();
+    var isDebug = !!params.debug;
+    if (isDebug) {
+        common_1.select("#topnav")
+            .style("height", "0px")
+            .style("display", "none");
+        common_1.select("#page")
+            .style("top", "0px");
+        common_1.select("#leftnav")
+            .style("width", "0px")
+            .style("display", "none");
+        common_1.select("#rightnav")
+            .style("width", "0px")
+            .style("display", "none");
+        common_1.select("#content")
+            .style("max-width", "100%");
+    }
     function transformIndexJson(indexJson) {
         var leftnavMap = {};
         var leftnavData = [];
@@ -102,9 +120,11 @@
                     scrollIndex = i;
                 }
                 var rightnavNode = context.rightnav.element().node();
-                var rightnavAnchor = rightnavNode.querySelectorAll(".hpccNavScroll-li")[scrollIndex];
-                var top = rightnavAnchor.getBoundingClientRect().top;
-                context.rightnav.moveMarker(top - yOffset - 2);
+                if (rightnavNode) {
+                    var rightnavAnchor = rightnavNode.querySelectorAll(".hpccNavScroll-li")[scrollIndex];
+                    var top_1 = rightnavAnchor.getBoundingClientRect().top;
+                    context.rightnav.moveMarker(top_1 - yOffset - 2);
+                }
             });
             this.leftnav.on("clicked", function (path) {
                 window.location.hash = path;

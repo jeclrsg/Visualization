@@ -66,11 +66,12 @@ var __extends = (this && this.__extends) || (function () {
                 this._widget = null;
                 System.import(this.systemJSUrl()).then(function () {
                     loading_1.remove();
-                    var element = _this._sampleDiv.select(".common_Widget");
-                    if (!element.empty()) {
-                        _this._widget = element.datum();
-                        _this.changed(_this._widget);
+                    var element = _this._sampleDiv.select(":first-child");
+                    if (element.empty()) {
+                        throw new Error("Unable to locate Widget...");
                     }
+                    _this._widget = element.datum();
+                    _this.changed(_this._widget);
                 }).catch(function (e) {
                     _this.changed(_this._widget);
                     _this._sampleDiv.node().innerText = e.message;
@@ -92,7 +93,9 @@ var __extends = (this && this.__extends) || (function () {
     function fetch(url) {
         var parts = url.address.split("/");
         var sampleWidget = document.getElementById(parts.pop())["__data__"];
-        return "window.shared = window.shared || {};\n\n" + sampleWidget.text().replace('.target("target")', ".target(\"" + sampleWidget.htmlNodeID() + "\")") + "\n";
+        return "window.shared = window.shared || {};\n\n" + sampleWidget.text()
+            .replace('.target("target")', ".target(\"" + sampleWidget.htmlNodeID() + "\")")
+            .replace('document.getElementById("target")', "document.getElementById(\"" + sampleWidget.htmlNodeID() + "\")") + "\n";
     }
     exports.fetch = fetch;
 });

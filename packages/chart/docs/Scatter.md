@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 1462,
+    "id": 1482,
     "name": "Scatter",
     "kind": 128,
     "kindString": "Class",
@@ -32,22 +32,22 @@
         {
             "type": "reference",
             "name": "Area",
-            "id": 2361
+            "id": 2401
         },
         {
             "type": "reference",
             "name": "BubbleXY",
-            "id": 5087
+            "id": 5147
         },
         {
             "type": "reference",
             "name": "Line",
-            "id": 10281
+            "id": 10381
         },
         {
             "type": "reference",
             "name": "Step",
-            "id": 13237
+            "id": 13337
         }
     ],
     "folder": "packages/chart"

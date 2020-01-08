@@ -2,7 +2,7 @@
 
 <!--meta
 {
-    "id": 9464,
+    "id": 9544,
     "name": "HexBin",
     "kind": 128,
     "kindString": "Class",
