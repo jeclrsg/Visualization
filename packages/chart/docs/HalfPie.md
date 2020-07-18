@@ -1,30 +1,7 @@
 # HalfPie
 
 <!--meta
-{
-    "id": 8949,
-    "name": "HalfPie",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "HalfPie.ts",
-            "line": 3,
-            "character": 20
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Pie",
-            "id": 8342
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 [Pie](./Pie.md), HalfPie and [QuarterPie](./QuarterPie.md) are effectively the same class, but have different starting and ending angles. They support all of the same properties.

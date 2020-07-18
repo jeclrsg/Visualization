@@ -10,6 +10,7 @@
     "use strict";
     var __syncRequire = typeof module === "object" && typeof module.exports === "object";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.App = void 0;
     var common_1 = require("@hpcc-js/common");
     var hpccIndex_js_1 = require("./hpccIndex.js");
     var hpccScrollNav_js_1 = require("./hpccScrollNav.js");

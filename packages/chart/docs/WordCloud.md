@@ -1,29 +1,7 @@
 # WordCloud
 
 <!--meta
-{
-    "id": 15181,
-    "name": "WordCloud",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "WordCloud.ts",
-            "line": 9,
-            "character": 22
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "SVGWidget"
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 A word cloud chart displays words with prominence relative to the word’s given weight. The larger the weight value, relative to the other word weights, the bigger it appears in the word cloud.

@@ -23,6 +23,7 @@ var __extends = (this && this.__extends) || (function () {
     "use strict";
     var __syncRequire = typeof module === "object" && typeof module.exports === "object";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.PublishedProperties = void 0;
     var common_1 = require("@hpcc-js/common");
     var marked = require("marked");
     var PublishedProperties = /** @class */ (function (_super) {

@@ -1,34 +1,7 @@
 # SummaryC
 
 <!--meta
-{
-    "id": 14651,
-    "name": "SummaryC",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "SummaryC.ts",
-            "line": 4,
-            "character": 21
-        },
-        {
-            "fileName": "SummaryC.ts",
-            "line": 123,
-            "character": 25
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "CanvasWidget"
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 SummaryC is commonly used to emphasize significant data points within a dashboard. It requires _labelColumn_ and _valueColumn_ to be specified.

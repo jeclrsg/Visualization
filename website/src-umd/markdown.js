@@ -58,6 +58,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Markdown = void 0;
     var common_1 = require("@hpcc-js/common");
     var marked = require("marked");
     var index_js_1 = require("./markdownPlugins/index.js");

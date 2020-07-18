@@ -1,29 +1,7 @@
 # Bubble
 
 <!--meta
-{
-    "id": 4641,
-    "name": "Bubble",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "Bubble.ts",
-            "line": 8,
-            "character": 19
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "SVGWidget"
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 A bubble chart represents a categorical data by displaying circles sized relative to each category's value. The circles are sized automatically to fit their target element.

@@ -1,30 +1,7 @@
 # HTMLEditor
 
 <!--meta
-{
-    "id": 17621,
-    "name": "HTMLEditor",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "HTMLEditor.ts",
-            "line": 3,
-            "character": 23
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Editor",
-            "id": 15847
-        }
-    ],
-    "folder": "packages/codemirror"
-}
+
 -->
 
 HTMLEditor displays an editable snippet of HTML with syntax coloring and code folding.
@@ -56,6 +33,8 @@ new HTMLEditor()
     ;
 
 ```
+
+HTMLEditor extends [Editor](./Editor.md).
 
 ## API
 

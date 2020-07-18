@@ -1,57 +1,7 @@
 # Scatter
 
 <!--meta
-{
-    "id": 1482,
-    "name": "Scatter",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "Scatter.ts",
-            "line": 16,
-            "character": 20
-        },
-        {
-            "fileName": "Scatter.ts",
-            "line": 352,
-            "character": 24
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "XYAxis",
-            "id": 693
-        }
-    ],
-    "extendedBy": [
-        {
-            "type": "reference",
-            "name": "Area",
-            "id": 2401
-        },
-        {
-            "type": "reference",
-            "name": "BubbleXY",
-            "id": 5147
-        },
-        {
-            "type": "reference",
-            "name": "Line",
-            "id": 10381
-        },
-        {
-            "type": "reference",
-            "name": "Step",
-            "id": 13337
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 Scatter, [Area](./Area.md), [Line](./Line.md) and [Step](./Step.md) serve a similar purpose. They display continuous data along a categorical or continuous axis.

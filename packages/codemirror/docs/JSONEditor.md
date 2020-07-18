@@ -1,30 +1,7 @@
 # JSONEditor
 
 <!--meta
-{
-    "id": 18513,
-    "name": "JSONEditor",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "JSONEditor.ts",
-            "line": 3,
-            "character": 23
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Editor",
-            "id": 15847
-        }
-    ],
-    "folder": "packages/codemirror"
-}
+
 -->
 
 JSONEditor displays an editable snippet of JSON with syntax coloring and code folding.
@@ -45,6 +22,8 @@ new JSONEditor()
     .render()
     ;
 ```
+
+JSONEditor extends [Editor](./Editor.md).
 
 ## API
 

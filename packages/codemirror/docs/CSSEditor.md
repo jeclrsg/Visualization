@@ -1,30 +1,7 @@
 # CSSEditor
 
 <!--meta
-{
-    "id": 16289,
-    "name": "CSSEditor",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "CSSEditor.ts",
-            "line": 3,
-            "character": 22
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Editor",
-            "id": 15847
-        }
-    ],
-    "folder": "packages/codemirror"
-}
+
 -->
 
 CSSEditor displays an editable snippet of CSS with syntax coloring and code folding.
@@ -50,6 +27,8 @@ body {
     ;
 
 ```
+
+CSSEditor extends [Editor](./Editor.md).
 
 ## API
 

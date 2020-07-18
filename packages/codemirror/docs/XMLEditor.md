@@ -1,30 +1,7 @@
 # XMLEditor
 
 <!--meta
-{
-    "id": 19401,
-    "name": "XMLEditor",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "XMLEditor.ts",
-            "line": 3,
-            "character": 22
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Editor",
-            "id": 15847
-        }
-    ],
-    "folder": "packages/codemirror"
-}
+
 -->
 
 XMLEditor displays an editable snippet of XML with syntax coloring and code folding.
@@ -60,6 +37,8 @@ new XMLEditor()
    .render()
    ;
 ```
+
+XMLEditor extends [Editor](./Editor.md).
 
 ## API
 

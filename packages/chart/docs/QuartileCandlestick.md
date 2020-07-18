@@ -1,34 +1,7 @@
 # QuartileCandlestick
 
 <!--meta
-{
-    "id": 11702,
-    "name": "QuartileCandlestick",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "QuartileCandlestick.ts",
-            "line": 4,
-            "character": 32
-        },
-        {
-            "fileName": "QuartileCandlestick.ts",
-            "line": 300,
-            "character": 36
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "SVGWidget"
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 QuartileCandlestick displays a five number summary of a range of numeric values. The five-number summary is the minimum, first quartile, median, third quartile, and maximum.

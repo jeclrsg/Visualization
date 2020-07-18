@@ -22,6 +22,7 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SourceSampleTabbed = void 0;
     var codemirror_1 = require("@hpcc-js/codemirror");
     var phosphor_1 = require("@hpcc-js/phosphor");
     var sample_js_1 = require("./sample.js");

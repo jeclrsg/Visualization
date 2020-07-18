@@ -1,30 +1,7 @@
 # JSEditor
 
 <!--meta
-{
-    "id": 18069,
-    "name": "JSEditor",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "JSEditor.ts",
-            "line": 3,
-            "character": 21
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Editor",
-            "id": 15847
-        }
-    ],
-    "folder": "packages/codemirror"
-}
+
 -->
 
 JSEditor displays an editable snippet of JavaScript with syntax coloring and code folding.
@@ -49,6 +26,8 @@ new JSEditor()
     ;            
 
 ```
+
+JSEditor extends [Editor](./Editor.md).
 
 ## API
 

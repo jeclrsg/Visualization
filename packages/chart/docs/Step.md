@@ -1,30 +1,7 @@
 # Step
 
 <!--meta
-{
-    "id": 13337,
-    "name": "Step",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "Step.ts",
-            "line": 3,
-            "character": 17
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Scatter",
-            "id": 1482
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 Step, [Area](./Area.md), [Line](./Line.md) and [Scatter](./Scatter.md) serve a similar purpose. They display continuous data along a categorical or continuous axis.

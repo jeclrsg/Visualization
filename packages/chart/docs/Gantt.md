@@ -1,30 +1,7 @@
 # Gantt
 
 <!--meta
-{
-    "id": 7171,
-    "name": "Gantt",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "Gantt.ts",
-            "line": 3,
-            "character": 18
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Bar",
-            "id": 3979
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 Gantt compares ranges of continuous data. Each range is represented by an array of two numeric values. The first column of each data row must contain a string or number to represent that row's category. Each additional column must contain an array of two numbers.

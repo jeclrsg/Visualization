@@ -1,30 +1,7 @@
 # ECLEditor
 
 <!--meta
-{
-    "id": 17177,
-    "name": "ECLEditor",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "ECLEditor.ts",
-            "line": 5,
-            "character": 22
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Editor",
-            "id": 15847
-        }
-    ],
-    "folder": "packages/codemirror"
-}
+
 -->
 
 ECLEditor displays an editable snippet of ECL with syntax coloring.
@@ -51,6 +28,8 @@ new ECLEditor()
     ;
 
 ```
+
+ECLEditor extends [Editor](./Editor.md).
 
 ## API
 

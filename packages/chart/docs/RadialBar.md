@@ -1,34 +1,7 @@
 # RadialBar
 
 <!--meta
-{
-    "id": 12798,
-    "name": "RadialBar",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "RadialBar.ts",
-            "line": 9,
-            "character": 22
-        },
-        {
-            "fileName": "RadialBar.ts",
-            "line": 189,
-            "character": 26
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "SVGWidget"
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 RadialBar displays one category and one numeric value per data row.

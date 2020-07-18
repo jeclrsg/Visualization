@@ -1,30 +1,7 @@
 # MarkdownEditor
 
 <!--meta
-{
-    "id": 18957,
-    "name": "MarkdownEditor",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "MarkdownEditor.ts",
-            "line": 3,
-            "character": 27
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "Editor",
-            "id": 15847
-        }
-    ],
-    "folder": "packages/codemirror"
-}
+
 -->
 
 MarkdownEditor displays an editable snippet of Markdown with syntax coloring and code folding.
@@ -359,6 +336,8 @@ for (var i = 0; i < items.length; i++) {
 `;
 }
 ```
+
+MarkdownEditor extends [Editor](./Editor.md).
 
 ## API
 

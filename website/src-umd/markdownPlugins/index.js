@@ -9,6 +9,7 @@
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.markdownWidget = void 0;
     var classMeta_js_1 = require("./classMeta.js");
     var publishedProperties_js_1 = require("./publishedProperties.js");
     var sample_js_1 = require("./sample.js");

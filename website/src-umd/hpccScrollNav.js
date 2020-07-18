@@ -22,6 +22,7 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.HPCCScrollNav = void 0;
     var common_1 = require("@hpcc-js/common");
     var HPCCScrollNav = /** @class */ (function (_super) {
         __extends(HPCCScrollNav, _super);

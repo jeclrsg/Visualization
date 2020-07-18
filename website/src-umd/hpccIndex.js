@@ -22,6 +22,7 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.HPCCIndex = void 0;
     var common_1 = require("@hpcc-js/common");
     require("../src/hpccIndex.css");
     var isHpccJS = function (_) { return _.indexOf("@hpcc-js") === 0; };

@@ -1,34 +1,7 @@
 # Radar
 
 <!--meta
-{
-    "id": 12236,
-    "name": "Radar",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "Radar.ts",
-            "line": 6,
-            "character": 18
-        },
-        {
-            "fileName": "Radar.ts",
-            "line": 306,
-            "character": 22
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "SVGWidget"
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 Radar displays continuous data across n-number of categories (rows) and n-number of series (columns).

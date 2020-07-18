@@ -1,30 +1,7 @@
 # HexBin
 
 <!--meta
-{
-    "id": 9544,
-    "name": "HexBin",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "HexBin.ts",
-            "line": 9,
-            "character": 19
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "XYAxis",
-            "id": 693
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 HexBin and [Contour](./Contour.md) serve a similar purpose. They summarize high density data across two continuous axes.

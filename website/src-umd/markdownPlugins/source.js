@@ -33,6 +33,7 @@ var __assign = (this && this.__assign) || function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Source = void 0;
     var codemirror_1 = require("@hpcc-js/codemirror");
     var Source = /** @class */ (function (_super) {
         __extends(Source, _super);

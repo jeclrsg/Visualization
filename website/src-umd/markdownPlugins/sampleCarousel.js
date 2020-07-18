@@ -22,6 +22,7 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SampleCarousel = void 0;
     var common_1 = require("@hpcc-js/common");
     var layout_1 = require("@hpcc-js/layout");
     var d3_fetch_1 = require("d3-fetch");

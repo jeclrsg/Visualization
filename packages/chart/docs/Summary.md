@@ -1,34 +1,7 @@
 # Summary
 
 <!--meta
-{
-    "id": 14059,
-    "name": "Summary",
-    "kind": 128,
-    "kindString": "Class",
-    "flags": {
-        "isExported": true
-    },
-    "sources": [
-        {
-            "fileName": "Summary.ts",
-            "line": 11,
-            "character": 20
-        },
-        {
-            "fileName": "Summary.ts",
-            "line": 181,
-            "character": 24
-        }
-    ],
-    "extendedTypes": [
-        {
-            "type": "reference",
-            "name": "HTMLWidget"
-        }
-    ],
-    "folder": "packages/chart"
-}
+
 -->
 
 Summary is commonly used to emphasize significant data points within a dashboard. It requires _labelColumn_ and _valueColumn_ to be specified.
