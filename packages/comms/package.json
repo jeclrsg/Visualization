@@ -34,7 +34,8 @@
         "lint": "eslint src/**/*.ts",
         "lint-fix": "eslint --fix src/**/*.ts",
         "test": "./node_modules/.bin/mocha lib-umd/__tests__ --reporter spec",
-        "docs": "typedoc --options tdoptions.json ."
+        "docs": "typedoc --options tdoptions.json .",
+        "wsdl-to-ts": "node ./utils/wsdl-to-ts/esm/index.js"
     },
     "dependencies": {
         "@hpcc-js/ddl-shim": "^2.17.19",
