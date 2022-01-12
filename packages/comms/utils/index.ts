@@ -32,7 +32,7 @@ const parsedEnums: JsonObj = {};
 
 const debug = args?.debug ?? false;
 const printToConsole = args?.print ?? false;
-const outDir = args?.outDir ? "./utils/wsdl-to-ts/wsdl/" + args?.outDir : "./utils/wsdl-to-ts/wsdl/";
+const outDir = args?.outDir ? args?.outDir : "./temp/wsdl";
 
 const ignoredWords = ["targetNSAlias", "targetNamespace"];
 
