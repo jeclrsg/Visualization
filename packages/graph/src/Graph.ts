@@ -46,6 +46,50 @@ export class Graph extends SVGZoomWidget {
     protected svgE;
     protected svgV;
 
+    // Performance optimization: throttle expensive mouseover/mouseout operations
+    private _throttledVertexMouseover = this.throttle((element: any, d: any) => {
+        this.highlightVertex(element, d);
+    }, 16); // ~60fps throttling
+
+    private _throttledVertexMouseout = this.throttle((element: any, d: any) => {
+        this.highlightVertex(null, null);
+    }, 16); // ~60fps throttling
+
+    private _throttledEdgeMouseover = this.throttle((element: any, d: any) => {
+        this.highlightEdge(element, d);
+    }, 16); // ~60fps throttling
+
+    private _throttledEdgeMouseout = this.throttle((element: any, d: any) => {
+        this.highlightEdge(null, null);
+    }, 16); // ~60fps throttling
+
+    // Performance optimization: throttle tooltip operations
+    private _throttledTooltipShow = this.throttle(() => {
+        this.tooltip.show();
+    }, 16); // ~60fps throttling
+
+    private _throttledTooltipHide = this.throttle(() => {
+        this.tooltip.hide();
+    }, 16); // ~60fps throttling
+
+    private throttle<T extends (...args: any[]) => void>(func: T, delay: number): T {
+        let timeoutId: ReturnType<typeof setTimeout> | undefined;
+        let lastExecTime = 0;
+        return ((...args: Parameters<T>) => {
+            const currentTime = Date.now();
+            if (currentTime - lastExecTime > delay) {
+                func(...args);
+                lastExecTime = currentTime;
+            } else {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    func(...args);
+                    lastExecTime = Date.now();
+                }, delay - (currentTime - lastExecTime));
+            }
+        }) as T;
+    }
+
     constructor() {
         super();
         IGraph.call(this);
@@ -427,17 +471,19 @@ export class Graph extends SVGZoomWidget {
                     vertex: d
                 });
             })
-            .on("mouseout.tooltip", this.tooltip.hide)
-            .on("mousemove.tooltip", this.tooltip.show)
+            .on("mouseout.tooltip", () => this._throttledTooltipHide())
+            .on("mousemove.tooltip", () => this._throttledTooltipShow())
             .on("mouseover", function (this: SVGElement, d) {
                 if (context._dragging)
                     return;
-                context.vertex_mouseover(d3Select(this), d);
+                // Use throttled version to improve INP performance
+                context._throttledVertexMouseover(d3Select(this), d);
             })
             .on("mouseout", function (this: SVGElement, d) {
                 if (context._dragging)
                     return;
-                context.vertex_mouseout(d3Select(this), d);
+                // Use throttled version to improve INP performance
+                context._throttledVertexMouseout(d3Select(this), d);
             })
             .each(createV)
             .transition()
@@ -545,17 +591,19 @@ export class Graph extends SVGZoomWidget {
                     edge: d
                 });
             })
-            .on("mouseout.tooltip", this.tooltip.hide)
-            .on("mousemove.tooltip", this.tooltip.show)
+            .on("mouseout.tooltip", () => this._throttledTooltipHide())
+            .on("mousemove.tooltip", () => this._throttledTooltipShow())
             .on("mouseover", function (this: SVGElement, d) {
                 if (context._dragging)
                     return;
-                context.edge_mouseover(d3Select(this), d);
+                // Use throttled version to improve INP performance
+                context._throttledEdgeMouseover(d3Select(this), d);
             })
             .on("mouseout", function (this: SVGElement, d) {
                 if (context._dragging)
                     return;
-                context.edge_mouseout(d3Select(this), d);
+                // Use throttled version to improve INP performance
+                context._throttledEdgeMouseout(d3Select(this), d);
             })
             .each(createE)
             .transition()

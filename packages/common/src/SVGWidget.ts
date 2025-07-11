@@ -151,6 +151,12 @@ export class SVGWidget extends Widget {
     protected _parentRelativeDiv;
     protected _parentOverlay;
 
+    // Move batching properties
+    private _moveScheduled: boolean = false;
+    private _pendingMove: { x: number, y: number, transitionDuration?: number } | null = null;
+    private static _scheduledMoves: Set<SVGWidget> = new Set();
+    private static _moveRafId: number | null = null;
+
     constructor() {
         super();
 
@@ -167,11 +173,49 @@ export class SVGWidget extends Widget {
     move(_?, transitionDuration?) {
         const retVal = this.pos(_);
         if (arguments.length) {
-            (transitionDuration ? this._element.transition().duration(transitionDuration) : this._element)
-                .attr("transform", `translate(${_.x} ${_.y})scale(${this._widgetScale})`)
-                ;
+            // Store pending move for batching
+            this._pendingMove = { x: _.x, y: _.y, transitionDuration };
+
+            // If no transition duration, batch with RAF for performance
+            if (!transitionDuration) {
+                if (!this._moveScheduled) {
+                    this._moveScheduled = true;
+                    SVGWidget._scheduledMoves.add(this);
+
+                    if (SVGWidget._moveRafId === null) {
+                        SVGWidget._moveRafId = requestAnimationFrame(() => {
+                            SVGWidget._processMoveUpdates();
+                        });
+                    }
+                }
+            } else {
+                // Apply transitions immediately to maintain D3 transition behavior
+                this._applyMove(_.x, _.y, transitionDuration);
+                this._pendingMove = null;
+            }
         }
         return retVal;
+    }
+
+    private _applyMove(x: number, y: number, transitionDuration?: number) {
+        (transitionDuration ? this._element.transition().duration(transitionDuration) : this._element)
+            .attr("transform", `translate(${x} ${y})scale(${this._widgetScale})`)
+            ;
+    }
+
+    private static _processMoveUpdates() {
+        // Process all scheduled move updates in a single frame
+        SVGWidget._scheduledMoves.forEach(widget => {
+            if (widget._pendingMove && !widget._pendingMove.transitionDuration) {
+                const { x, y } = widget._pendingMove;
+                widget._applyMove(x, y);
+                widget._pendingMove = null;
+            }
+            widget._moveScheduled = false;
+        });
+
+        SVGWidget._scheduledMoves.clear();
+        SVGWidget._moveRafId = null;
     }
 
     _enableOverflow = false;
@@ -323,6 +367,13 @@ export class SVGWidget extends Widget {
     }
 
     exit(domNode?, element?) {
+        // Clean up any pending moves
+        if (this._moveScheduled) {
+            SVGWidget._scheduledMoves.delete(this);
+            this._moveScheduled = false;
+            this._pendingMove = null;
+        }
+
         if (this._parentRelativeDiv) {
             this._parentOverlay.remove();
             this._placeholderElement.remove();

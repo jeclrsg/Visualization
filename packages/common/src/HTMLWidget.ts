@@ -6,6 +6,9 @@ export class HTMLWidget extends Widget {
     private observer;
     protected _drawStartPos: "origin" | "center";
     protected _boundingBox;
+    private _bboxScheduled: boolean = false;
+    private static _scheduledWidgets: Set<HTMLWidget> = new Set();
+    private static _rafId: number | null = null;
 
     constructor() {
         super();
@@ -65,17 +68,22 @@ export class HTMLWidget extends Widget {
 
     getBBox(refresh = false, round = false) {
         if (refresh || this._boundingBox === null) {
-            const domNode = this._element.node() ? this._element.node().firstElementChild : null;   //  Needs to be first child, as element has its width/height forced onto it.
-            if (domNode instanceof Element) {
-                const rect = domNode.getBoundingClientRect();
-                this._boundingBox = {
-                    x: rect.left,
-                    y: rect.top,
-                    width: rect.width,
-                    height: rect.height
-                };
+            // Schedule bbox calculation for next frame to batch multiple calls
+            if (!this._bboxScheduled) {
+                this._bboxScheduled = true;
+                HTMLWidget._scheduledWidgets.add(this);
+
+                if (HTMLWidget._rafId === null) {
+                    HTMLWidget._rafId = requestAnimationFrame(() => {
+                        HTMLWidget._processBBoxUpdates();
+                    });
+                }
             }
+
+            // Still calculate immediately to maintain API compatibility
+            this._calculateBBox();
         }
+
         if (this._boundingBox === null) {
             return {
                 x: 0,
@@ -84,12 +92,37 @@ export class HTMLWidget extends Widget {
                 height: 0
             };
         }
+
         return {
             x: (round ? Math.round(this._boundingBox.x) : this._boundingBox.x) * this._widgetScale,
             y: (round ? Math.round(this._boundingBox.y) : this._boundingBox.y) * this._widgetScale,
             width: (round ? Math.round(this._boundingBox.width) : this._boundingBox.width) * this._widgetScale,
             height: (round ? Math.round(this._boundingBox.height) : this._boundingBox.height) * this._widgetScale
         };
+    }
+
+    private _calculateBBox() {
+        const domNode = this._element.node() ? this._element.node().firstElementChild : null;
+        if (domNode instanceof Element) {
+            const rect = domNode.getBoundingClientRect();
+            this._boundingBox = {
+                x: rect.left,
+                y: rect.top,
+                width: rect.width,
+                height: rect.height
+            };
+        }
+    }
+
+    private static _processBBoxUpdates() {
+        // Process all scheduled bbox updates in a single frame
+        HTMLWidget._scheduledWidgets.forEach(widget => {
+            widget._calculateBBox();
+            widget._bboxScheduled = false;
+        });
+
+        HTMLWidget._scheduledWidgets.clear();
+        HTMLWidget._rafId = null;
     }
 
     reposition(pos?) {

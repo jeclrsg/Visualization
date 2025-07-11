@@ -755,25 +755,8 @@ export class GraphT<SG extends SubgraphBaseProps, V extends VertexBaseProps, E e
                         context.vertex_mousein(d.props.origData || d.props, "", selected, eventOrigin);
                     })
                     .on("mouseover", function (d) {
-                        Utility.safeRaise(this);
-                        context.highlightVertex(d3Select(this), d);
-                        const selected = d.element.classed("selected");
-                        if (d.props.tooltip) {
-                            context._tooltip
-                                .tooltipHTML(context.tooltipHTML.bind(context))
-                                .triggerElement(d.element)
-                                .tooltipWidth(context.tooltipWidth())
-                                .tooltipHeight(context.tooltipHeight())
-                                .enablePointerEvents(context.enableTooltipPointerEvents())
-                                .closeDelay(context.tooltipCloseDelay())
-                                .direction("n")
-                                .data(d)
-                                .visible(true)
-                                .render()
-                                ;
-                        }
-                        const eventOrigin = context.resolveEventOrigin();
-                        context.vertex_mouseover(d.props.origData || d.props, "", selected, eventOrigin);
+                        // Throttle expensive operations to improve INP
+                        context._throttledMouseover(this, d);
                     })
                     .on("mouseout", function (d) {
                         context.highlightVertex(null, null);
@@ -1142,6 +1125,47 @@ export class GraphT<SG extends SubgraphBaseProps, V extends VertexBaseProps, E e
     }
 
     progress(what: "start" | "stop" | "layout-start" | "layout-tick" | "layout-stop") {
+    }
+
+    // Performance optimization: throttle expensive mouseover operations
+    private _throttledMouseover = this.throttle((element: SVGElement, d: VertexPlaceholder<V>) => {
+        Utility.safeRaise(element);
+        this.highlightVertex(d3Select(element), d);
+        const selected = d.element.classed("selected");
+        if (d.props.tooltip) {
+            this._tooltip
+                .tooltipHTML(this.tooltipHTML.bind(this))
+                .triggerElement(d.element)
+                .tooltipWidth(this.tooltipWidth())
+                .tooltipHeight(this.tooltipHeight())
+                .enablePointerEvents(this.enableTooltipPointerEvents())
+                .closeDelay(this.tooltipCloseDelay())
+                .direction("n")
+                .data(d)
+                .visible(true)
+                .render()
+                ;
+        }
+        const eventOrigin = this.resolveEventOrigin();
+        this.vertex_mouseover(d.props.origData || d.props, "", selected, eventOrigin);
+    }, 16); // ~60fps throttling
+
+    private throttle<T extends (...args: any[]) => void>(func: T, delay: number): T {
+        let timeoutId: ReturnType<typeof setTimeout> | undefined;
+        let lastExecTime = 0;
+        return ((...args: Parameters<T>) => {
+            const currentTime = Date.now();
+            if (currentTime - lastExecTime > delay) {
+                func(...args);
+                lastExecTime = currentTime;
+            } else {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    func(...args);
+                    lastExecTime = Date.now();
+                }, delay - (currentTime - lastExecTime));
+            }
+        }) as T;
     }
 }
 GraphT.prototype._class += " graph_GraphT";

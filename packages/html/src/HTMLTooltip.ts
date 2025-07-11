@@ -78,7 +78,7 @@ export class HTMLTooltip extends HTMLWidget {
         } else {
             this._tooltipElement
                 .html(() => {
-                    return this._tooltipHTMLCallback(this.data());
+                    return this.getTooltipHTML(this.data());
                 });
         }
         if (this.fitContent()) {
@@ -300,6 +300,52 @@ export class HTMLTooltip extends HTMLWidget {
             }
         };
         return bbox;
+    }
+
+    // Performance optimization: Cache tooltip HTML to avoid re-rendering
+    private _tooltipHTMLCache = new Map<string, string>();
+    private _tooltipDataHash: string | null = null;
+
+    private getTooltipHTML(data: any): string {
+        const dataHash = JSON.stringify(data);
+        if (this._tooltipDataHash !== dataHash) {
+            this._tooltipDataHash = dataHash;
+            if (!this._tooltipHTMLCache.has(dataHash)) {
+                this._tooltipHTMLCache.set(dataHash, this._tooltipHTMLCallback(data));
+                // Limit cache size to prevent memory leaks
+                if (this._tooltipHTMLCache.size > 100) {
+                    const firstKey = this._tooltipHTMLCache.keys().next().value;
+                    this._tooltipHTMLCache.delete(firstKey);
+                }
+            }
+        }
+        return this._tooltipHTMLCache.get(dataHash) || "";
+    }
+
+    // Performance optimization: Debounce tooltip positioning
+    private _positionDebounce: ReturnType<typeof setTimeout> | null = null;
+    private _pendingPosition: Position | null = null;
+
+    private debouncedPosition(position: Position): void {
+        this._pendingPosition = position;
+        if (this._positionDebounce) {
+            clearTimeout(this._positionDebounce);
+        }
+        this._positionDebounce = setTimeout(() => {
+            if (this._pendingPosition) {
+                this.applyPosition(this._pendingPosition);
+                this._pendingPosition = null;
+            }
+            this._positionDebounce = null;
+        }, 8); // ~120fps update rate
+    }
+
+    private applyPosition(position: Position): void {
+        if (this._tooltipElement) {
+            this._tooltipElement
+                .style("left", position.x + "px")
+                .style("top", position.y + "px");
+        }
     }
 
     private _closing = false;

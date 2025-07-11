@@ -397,8 +397,11 @@ export class Axis extends SVGWidget {
             case "stagger":
             case "hide":
                 const bboxArr = [];
-                element.selectAll(".tick > text").each(function () {
-                    const bbox = this.getBoundingClientRect();
+                // Use batch getBBox operations to reduce layout thrashing
+                const textNodes = element.selectAll(".tick > text").nodes();
+                const bboxes = textNodes.map(node => node.getBoundingClientRect());
+
+                bboxes.forEach(bbox => {
                     for (let i = bboxArr.length - 1; i >= 0; --i) {
                         if (bboxArr[i].right < bbox.left) {
                             break;
@@ -637,6 +640,45 @@ export class Axis extends SVGWidget {
             this._guideElement
                 .attr("transform", this._element.attr("transform"))
                 ;
+        }
+    }
+
+    // Performance optimization: Cache expensive DOM operations
+    private _axisUpdateCache = new Map<string, any>();
+
+    private getCachedAxisUpdate(cacheKey: string, updateFn: () => any): any {
+        if (!this._axisUpdateCache.has(cacheKey)) {
+            this._axisUpdateCache.set(cacheKey, updateFn());
+        }
+        return this._axisUpdateCache.get(cacheKey);
+    }
+
+    private clearAxisUpdateCache(): void {
+        this._axisUpdateCache.clear();
+    }
+
+    // Performance optimization: Use RAF for non-critical axis updates
+    private _rafAxisUpdate: number | null = null;
+    private _pendingAxisUpdate: (() => void) | null = null;
+
+    private scheduleAxisUpdate(updateFn: () => void, immediate: boolean = false): void {
+        if (immediate) {
+            if (this._rafAxisUpdate) {
+                cancelAnimationFrame(this._rafAxisUpdate);
+                this._rafAxisUpdate = null;
+            }
+            updateFn();
+        } else {
+            this._pendingAxisUpdate = updateFn;
+            if (!this._rafAxisUpdate) {
+                this._rafAxisUpdate = requestAnimationFrame(() => {
+                    if (this._pendingAxisUpdate) {
+                        this._pendingAxisUpdate();
+                        this._pendingAxisUpdate = null;
+                    }
+                    this._rafAxisUpdate = null;
+                });
+            }
         }
     }
 }
