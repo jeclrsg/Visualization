@@ -1,10 +1,11 @@
 import { describe, it, expect } from "vitest";
 
-import { DFUWorkunit, Workunit, TopologyService } from "@hpcc-js/comms";
+import { DFUWorkunit, Workunit, TopologyService, FileSprayService } from "@hpcc-js/comms";
 import { ESP_URL, isCI } from "./testLib.ts";
 
 const connOptions = { baseUrl: ESP_URL };
 let netAddress: string = ".";
+let dfuServerQueue: string = "";
 
 if (!isCI) {
     describe("fixed file life cycle", () => {
@@ -16,6 +17,12 @@ if (!isCI) {
             const dropzone = response?.TpDropZones?.TpDropZone[0];
             netAddress = dropzone?.TpMachines?.TpMachine[0]?.Netaddress ?? "";
             expect(netAddress).exist;
+        });
+        it("get DFU Server Queue", async () => {
+            const service = new FileSprayService({ "baseUrl": ESP_URL });
+            const response = await service.GetDFUServerQueues({});
+            dfuServerQueue = response?.Names?.Item?.[0] ?? "";
+            expect(dfuServerQueue).exist;
         });
 
         it("create workunit", function () {
@@ -105,11 +112,12 @@ OUTPUT(usPresidents,,'.::test::abc::123::us_presidents.txt',OVERWRITE);`
         });
         it("import (spray) fixed file", function () {
             expect(netAddress).exist;
+            expect(dfuServerQueue).exist;
             return DFUWorkunit.sprayFixed(
                 connOptions,
                 {
                     destGroup: "mythor",
-                    DFUServerQueue: "dfuserver_queue",
+                    DFUServerQueue: dfuServerQueue,
                     sourceIP: netAddress,
                     sourcePath: "/var/lib/HPCCSystems/mydropzone/test/us_presidents.txt",
                     destLogicalName: "us_presidents.txt",
@@ -245,11 +253,12 @@ OUTPUT(fakePeople,,'.::test::abc::123::fake_people.csv',CSV(HEADING(SINGLE)),OVE
         });
         it("import (spray) CSV file", function () {
             expect(netAddress).exist;
+            expect(dfuServerQueue).exist;
             return DFUWorkunit.sprayVariable(
                 connOptions,
                 {
                     destGroup: "mythor",
-                    DFUServerQueue: "dfuserver_queue",
+                    DFUServerQueue: dfuServerQueue,
                     sourceIP: netAddress,
                     sourcePath: "/var/lib/HPCCSystems/mydropzone/test/fake_people.csv",
                     sourceFormat: 1,
@@ -381,11 +390,12 @@ OUTPUT(books,,'.::test::abc::123::books.json',JSON,OVERWRITE);`
         });
         it("import (spray) JSON file", function () {
             expect(netAddress).exist;
+            expect(dfuServerQueue).exist;
             return DFUWorkunit.sprayVariable(
                 connOptions,
                 {
                     destGroup: "mythor",
-                    DFUServerQueue: "dfuserver_queue",
+                    DFUServerQueue: dfuServerQueue,
                     sourceIP: netAddress,
                     sourcePath: "/var/lib/HPCCSystems/mydropzone/test/books.json",
                     sourceFormat: 2,
@@ -437,3 +447,14 @@ OUTPUT(books,,'.::test::abc::123::books.json',JSON,OVERWRITE);`
         });
     });
 }
+
+describe("DFUWorkunit error handling", () => {
+    //  Non-ESP rejections must propagate unchanged, not be replaced by a TypeError
+    //  from blindly reading `.Exception` off a shape they don't have.
+    it("GetDFUWorkunit rethrows a non-ESP rejection untouched", async () => {
+        const dfuWu = DFUWorkunit.attach(connOptions, "D-does-not-matter");
+        const networkError = new Error("network down");
+        dfuWu.connection.GetDFUWorkunit = () => Promise.reject(networkError);
+        await expect(dfuWu.refresh()).rejects.toBe(networkError);
+    });
+});

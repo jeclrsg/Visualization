@@ -1,7 +1,7 @@
 import { Cache, scopedLogger, StateObject } from "@hpcc-js/util";
 import { IConnection, IOptions } from "../connection.ts";
 import { DFUService, WsDfu } from "../services/wsDFU.ts";
-import { ESPExceptions } from "../espConnection.ts";
+import { ESPExceptions, isExceptions } from "../espConnection.ts";
 
 const logger = scopedLogger("logicalFile.ts");
 
@@ -157,6 +157,7 @@ export class LogicalFile extends StateObject<FileDetailEx, FileDetailEx> impleme
             });
             return response.FileDetail;
         }).catch((e: ESPExceptions) => {
+            if (!isExceptions(e)) throw e;
             //  deleted  ---
             const fileMissing = e.Exception.some((exception) => {
                 if (exception.Code === 20038) {

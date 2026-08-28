@@ -2,7 +2,7 @@ import { Cache, deepMixinT, IEvent, RecursivePartial, scopedLogger, StateCallbac
 import { format as d3Format } from "d3-format";
 import { utcFormat, utcParse } from "d3-time-format";
 import { IConnection, IOptions } from "../connection.ts";
-import { ESPExceptions, ESPResponseType } from "../espConnection.ts";
+import { ESPExceptions, ESPResponseType, isExceptions } from "../espConnection.ts";
 import { WsSMC } from "../services/wsSMC.ts";
 import * as WsTopology from "../services/wsTopology.ts";
 import { WsWorkunits, WUStateID, WorkunitsService, WorkunitsServiceEx, WUUpdate } from "../services/wsWorkunits.ts";
@@ -1078,6 +1078,7 @@ export class Workunit extends StateObject<UWorkunitState, IWorkunitState> implem
             }
             return response;
         }).catch((e: ESPExceptions) => {
+            if (!isExceptions(e)) throw e;
             //  deleted  ---
             const wuMissing = e.Exception.some((exception) => {
                 if (exception.Code === 20081) {
@@ -1120,6 +1121,7 @@ export class Workunit extends StateObject<UWorkunitState, IWorkunitState> implem
             }
             return response;
         }).catch((e: ESPExceptions) => {
+            if (!isExceptions(e)) throw e;
             //  deleted  ---
             const wuMissing = e.Exception.some((exception) => {
                 if (exception.Code === 20080) {

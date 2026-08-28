@@ -39,7 +39,7 @@ export class ESPExceptions extends Error implements Exceptions {
 }
 
 export function isExceptions(err: any): err is Exceptions {
-    return err instanceof ESPExceptions || (err.isESPExceptions && Array.isArray(err.Exception));
+    return err instanceof ESPExceptions || !!(err && err.isESPExceptions && Array.isArray(err.Exception));
 }
 
 function isConnection(optsConnection: IOptions | IConnection): optsConnection is IConnection {

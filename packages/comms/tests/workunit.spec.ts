@@ -314,3 +314,21 @@ OUTPUT(topUrls);
         });
     });
 });
+
+describe("test/esp/ecl/Workunit error handling", () => {
+    //  Non-ESP rejections (network errors, aborts, etc.) must propagate unchanged, not be replaced
+    //  by a TypeError from blindly reading `.Exception` off a shape they don't have.
+    it("WUQuery rethrows a non-ESP rejection untouched", async () => {
+        const wu = Workunit.attach({ baseUrl: ESP_URL }, "W-does-not-matter");
+        const networkError = new Error("network down");
+        wu.connection.WUQuery = () => Promise.reject(networkError);
+        await expect(wu.refreshState()).rejects.toBe(networkError);
+    });
+
+    it("WUInfo rethrows a non-ESP rejection untouched", async () => {
+        const wu = Workunit.attach({ baseUrl: ESP_URL }, "W-does-not-matter");
+        const networkError = new Error("network down");
+        wu.connection.WUInfo = () => Promise.reject(networkError);
+        await expect(wu.refreshInfo()).rejects.toBe(networkError);
+    });
+});

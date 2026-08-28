@@ -1,6 +1,6 @@
 import { Cache, IEvent, scopedLogger, StateCallback, StateEvents, StateObject, StatePropCallback } from "@hpcc-js/util";
 import { IConnection, IOptions } from "../connection.ts";
-import { ESPExceptions } from "../espConnection.ts";
+import { ESPExceptions, isExceptions } from "../espConnection.ts";
 import { WsSMC } from "../services/wsSMC.ts";
 import { FileSpray, FileSprayService, UpdateDFUWorkunitEx } from "../services/fileSpray.ts";
 import * as WsTopology from "../services/wsTopology.ts";
@@ -346,6 +346,7 @@ export class DFUWorkunit extends StateObject<UDFUWorkunitState, IDFUWorkunitStat
             this.set(response.result);
             return response;
         }).catch((e: ESPExceptions) => {
+            if (!isExceptions(e)) throw e;
             //  deleted  ---
             const wuMissing = e.Exception.some((exception) => {
                 if (exception.Code === 20080 || exception.Code === 20081) {
